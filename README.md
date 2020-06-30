@@ -6,7 +6,7 @@ The data for the figures can be found in the /data folder. Figures are saved in 
 
 
 ## Dependencies
-The MATLAB code was developed on MATLAB R2020a, but it should run on later versions as well. 
+The MATLAB code was developed on MATLAB R2020a, but it should run on earlier versions as well. 
 
 To run the python notebook, you will need Python3, jupyter notebook and a few other packages. You can install the packages with the requirements file: 
 
@@ -24,6 +24,6 @@ Figure made with fft_figure.ipynb
 
 
 
-![](figs/figure_SVD.png)
+![](figs/figure_SVD.png) 
 
-Figure made with figure_SVD.m
+Figure made with figure_SVD.m 
