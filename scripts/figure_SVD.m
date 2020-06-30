@@ -54,10 +54,10 @@ myfiguresize = [left, bottom, width, height];
 set(fig, 'Position',  myfiguresize, 'PaperPosition', myfiguresize); 
  
 Pars.n_modes = 5;
-dy = 1/Pars.n_modes*0.97;
+dy = 1/Pars.n_modes*0.95;
 
 for i = 1:Pars.n_modes
-    y_base = 0.05+dy*(i-1); 
+    y_base = 0.07+dy*(i-1); 
     n_mode = Pars.n_modes -i+1;
     Pars.n_mode = n_mode;
     

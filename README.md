@@ -18,8 +18,12 @@ If you don't have python3 installed, you can run the notebook in the cloud. E.g.
 ## Figure previews
 
 ![](figs/figure_fft.png)
+
 Figure made with fft_figure.ipynb
 
 
+
+
 ![](figs/figure_SVD.png)
+
 Figure made with figure_SVD.m
