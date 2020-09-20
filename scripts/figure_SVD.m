@@ -1,8 +1,8 @@
-% -----------------------------------
-% tlmohren 2020-06-03
-% COMSOL with Euler-Lagrange data
-
-%-------------------------------------
+% % -----------------------------------
+% % tlmohren 2020-06-03
+% % COMSOL with Euler-Lagrange data
+% 
+% %-------------------------------------
 clc;clear all;close all
  
 mydir  = pwd;
@@ -20,7 +20,7 @@ Pars.plot_colors = [
     228,26,28
     55,126,184
     77,175,74]/255;  % insert colors from e.g. colorbrewer
-
+ 
 %% load data 
 SVD_data = struct;
 header_lines = 10;
@@ -41,7 +41,7 @@ end
 fig = figure();
 
 width = 6.6;
-height = 6; 
+height = 5; 
 
 set(fig,'InvertHardcopy','on');
 set(fig,'PaperUnits', 'inches');
@@ -52,16 +52,17 @@ bottom = (papersize(2)- height)/2;
 myfiguresize = [left, bottom, width, height];
 
 set(fig, 'Position',  myfiguresize, 'PaperPosition', myfiguresize); 
- 
-Pars.n_modes = 5;
-dy = 1/Pars.n_modes*0.95;
-
-for i = 1:Pars.n_modes
-    y_base = 0.07+dy*(i-1); 
-    n_mode = Pars.n_modes -i+1;
-    Pars.n_mode = n_mode;
+%  
+Pars.n_modes = 4;
+dy = 1/Pars.n_modes*0.9;
+% 
+for i = 1  :Pars.n_modes
+    y_base = 0.1+dy*(i-1); 
+    Pars.n_mode = Pars.n_modes -i+1;  
     
+    % position [x(lower left), y(lower left), width, height]
     pos1 = [0.05, y_base,  0.13, dy-0.05]; 
+    
     ax0 = subplot('Position',pos1); 
     hold on
     plot_singularvalues(ax0, SVD_data, Pars) 
@@ -75,33 +76,36 @@ for i = 1:Pars.n_modes
     pos1 = [col2_start, y_base,  col2_width, wing_height]; 
     ax0 = subplot('Position',pos1); 
     heatmap_wing(ax0, SVD_data(2), Pars)  
-    
+%     
     pos1 = [col2_start, totaly-wing_height ,  col2_width, wing_height]; 
     ax0 = subplot('Position',pos1);
     heatmap_wing(ax0, SVD_data(1), Pars)  
-    
-
+%     
+% 
     pos1 = [0.52, y_base,  0.22, dy-0.05]; 
     ax0 = subplot('Position',pos1); 
     hold on
     plot_time(ax0, SVD_data, Pars)  
-
-
+% 
+% 
     pos1 = [0.8, y_base,  0.18, dy-0.05];  
     ax0 = subplot('Position',pos1); 
     hold on
     plot_fft(ax0, SVD_data, Pars) 
-
+% % % 
 end
- 
+% %  
 %% Saving image
 figname = fullfile( base_dir,'figs', 'figure_SVD');
 print(fig, figname, '-dpng', '-r300');
 print(fig, figname, '-dsvg', '-r300');
 print(fig, figname, '-dpdf', '-r300');
- 
-%% Panel functions 
+% %  
 
+
+
+%% Panel functions 
+% 
 function plot_singularvalues(ax, SVD_data, Pars) 
     n = 6;
     for i = 1:length(SVD_data)
